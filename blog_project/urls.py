@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.urls import path, include # import the include
 from django.conf.urls.static import static
 from django.conf import settings
+from blog.views import index, post
 
 urlpatterns = [
+    path('', index),
     path('admin/', admin.site.urls),
+    path('posts/<int:post_id>', post),
     path('ckeditor/', include('ckeditor_uploader.urls')) # including the urls from the installed module
 ]+ static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) # when media is accessed, it will point to the media folder
