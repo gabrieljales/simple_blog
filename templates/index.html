@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block sub_header %}
+<div class="jumbotron p-4 p-md-5 text-white rounded bg-dark">
+    <div class="col-md-6 px-0">
+      <h1 class="display-4 font-italic">Bem vindo(a) ao nosso blog!</h1>
+      <p class="lead my-3">Esse simples blog foi feito utilizando Django e Bootstrap!</p>
+      <p class="lead mb-0"><a class="text-white font-weight-bold">Boa leitura :)</a></p>
+    </div>
+  </div>
+
+  <div class="row mb-2">
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">World</strong>
+          <h3 class="mb-0">Featured post</h3>
+          <div class="mb-1 text-muted">Nov 12</div>
+          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-success">Design</strong>
+          <h3 class="mb-0">Post title</h3>
+          <div class="mb-1 text-muted">Nov 11</div>
+          <p class="mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+        <div class="col-auto d-none d-lg-block">
+          <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock sub_header %}
+
+{% block content %}
+<h3 class="pb-4 mb-4 font-italic border-bottom">
+    From the Firehose
+  </h3>
+  {% for posts in posts %}
+
+  <div class="blog-post">
+    <h2 class="blog-post-title">
+        <a href="/posts/{{ posts.pk }}">{{ posts.title }}</a>
+    </h2>
+    <p class="blog-post-meta">{{ posts.created_at|date:"D d M Y" }} by 
+        <a href="#">{{ posts.author.get_full_name }}</a></p> {# pk= primary key, let's use this in the post address #}
+
+    {{ posts.summary|safe }}
+    <!-- Safe is used when you want to turn it off and let the template rendering system know that 
+    your date is safe in an un-escaped form. -->
+
+  </div><!-- /.blog-post -->
+  
+  {% endfor %}
+  
+  <nav class="blog-pagination">
+    <a class="btn btn-outline-primary" href="#">Older</a>
+    <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
+  </nav>
+{% endblock  %}

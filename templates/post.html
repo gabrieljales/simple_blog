@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <div class="blog-post">
+    <h2 class="blog-post-title">
+        {{ post.title }}
+    </h2>
+    <p class="blog-post-meta{{ posts.pk }}">{{ post.created_at|date:"D d M Y" }} by 
+        <a href="#">{{ post.author.get_full_name }}</a></p> {# pk= primary key, let's use this in the post address #}
+
+    {{ post.content|safe }}
+    <!-- Safe is used when you want to turn it off and let the template rendering system know that 
+    your date is safe in an un-escaped form. -->
+
+  </div><!-- /.blog-post -->
+{% endblock  %}
