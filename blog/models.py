@@ -7,7 +7,7 @@ class Post(models.Model):
     title = models.CharField(max_length=255)
     summary = RichTextField() # ckeditor Text Field
     content = RichTextUploadingField() # ckeditor Text Field + upload images
-    author = models.ForeignKey(User, on_delete = models.PROTECT) # Protege o user
+    author = models.ForeignKey(User, on_delete = models.PROTECT)
     created_at = models.DateField(auto_now_add = True)
 
     def __str__(self):
