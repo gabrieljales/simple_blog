@@ -43,7 +43,7 @@
 
 {% block content %}
 <h3 class="pb-4 mb-4 font-italic border-bottom">
-    From the Firehose
+    Artigos novos em folha
   </h3>
   {% for posts in posts %}
 
@@ -52,7 +52,7 @@
         <a href="/posts/{{ posts.pk }}">{{ posts.title }}</a>
     </h2>
     <p class="blog-post-meta">{{ posts.created_at|date:"D d M Y" }} by 
-        <a href="#">{{ posts.author.get_full_name }}</a></p> {# pk= primary key, let's use this in the post address #}
+      <a href="#">{{ posts.author.get_full_name }}</a></p> {# pk= primary key, let's use this in the post address #}
 
     {{ posts.summary|safe }}
     <!-- Safe is used when you want to turn it off and let the template rendering system know that 
@@ -66,4 +66,7 @@
     <a class="btn btn-outline-primary" href="#">Older</a>
     <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>
   </nav>
+
+
+  
 {% endblock  %}
