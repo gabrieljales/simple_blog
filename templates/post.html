@@ -4,12 +4,12 @@
 
   <div class="blog-post">
     <h2 class="blog-post-title">
-        {{ post.title }}
+        {{ posts.title }}
     </h2>
-    <p class="blog-post-meta{{ posts.pk }}">{{ post.created_at|date:"D d M Y" }} by 
-        <a href="#">{{ post.author.get_full_name }}</a></p> {# pk= primary key, let's use this in the post address #}
+    <p class="blog-post-meta{{ posts.pk }}">{{ posts.created_at|date:"D d M Y" }} by 
+        <a href="#">{{ posts.author.get_full_name }}</a></p> {# pk= primary key, let's use this in the post address #}
 
-    {{ post.content|safe }}
+    {{ posts.content|safe }}
     <!-- Safe is used when you want to turn it off and let the template rendering system know that 
     your date is safe in an un-escaped form. -->
 
